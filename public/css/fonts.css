@@ -1,0 +1,241 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?b8p4o9');
+  src:  url('fonts/icomoon.eot?b8p4o9#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?b8p4o9') format('truetype'),
+    url('fonts/icomoon.woff?b8p4o9') format('woff'),
+    url('fonts/icomoon.svg?b8p4o9#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-move-vertical-alt1:before {
+  content: "\e92f";
+}
+.icon-move-vertical:before {
+  content: "\e930";
+}
+.icon-move-horizontal-alt1:before {
+  content: "\e92c";
+}
+.icon-move-horizontal:before {
+  content: "\e92d";
+}
+.icon-alert:before {
+  content: "\e928";
+}
+.icon-download:before {
+  content: "\e913";
+}
+.icon-home:before {
+  content: "\e901";
+}
+.icon-eyedropper:before {
+  content: "\e90a";
+}
+.icon-droplet:before {
+  content: "\e90b";
+}
+.icon-paint-format:before {
+  content: "\e90c";
+}
+.icon-image:before {
+  content: "\e90d";
+}
+.icon-images:before {
+  content: "\e90e";
+}
+.icon-book:before {
+  content: "\e92a";
+}
+.icon-stack:before {
+  content: "\e92e";
+}
+.icon-calculator:before {
+  content: "\e940";
+}
+.icon-undo:before {
+  content: "\e965";
+}
+.icon-spinner:before {
+  content: "\e97a";
+}
+.icon-spinner2:before {
+  content: "\e97b";
+}
+.icon-spinner3:before {
+  content: "\e97c";
+}
+.icon-enlarge:before {
+  content: "\e989";
+}
+.icon-equalizer:before {
+  content: "\e992";
+}
+.icon-equalizer2:before {
+  content: "\e993";
+}
+.icon-magic-wand:before {
+  content: "\e997";
+}
+.icon-stats-dots:before {
+  content: "\e99b";
+}
+.icon-stats-bars:before {
+  content: "\e99c";
+}
+.icon-menu:before {
+  content: "\e9bd";
+}
+.icon-menu3:before {
+  content: "\e9bf";
+}
+.icon-sphere:before {
+  content: "\e9c9";
+}
+.icon-sun:before {
+  content: "\e9d4";
+}
+.icon-contrast:before {
+  content: "\e9d5";
+}
+.icon-brightness-contrast:before {
+  content: "\e9d6";
+}
+.icon-stop2:before {
+  content: "\ea1e";
+}
+.icon-loop2:before {
+  content: "\ea2e";
+}
+.icon-checkbox-checked:before {
+  content: "\ea52";
+}
+.icon-checkbox-unchecked:before {
+  content: "\ea53";
+}
+.icon-filter:before {
+  content: "\ea5b";
+}
+.icon-notebook-list:before {
+  content: "\e92b";
+}
+.icon-minus:before {
+  content: "\e904";
+}
+.icon-add:before {
+  content: "\e902";
+}
+.icon-power:before {
+  content: "\e912";
+}
+.icon-arrow-minimise:before {
+  content: "\e910";
+}
+.icon-linear_scale:before {
+  content: "\e929";
+}
+.icon-stacked_line_chart:before {
+  content: "\e926";
+}
+.icon-border_inner:before {
+  content: "\e922";
+}
+.icon-border_all:before {
+  content: "\e923";
+}
+.icon-border_horizontal:before {
+  content: "\e921";
+}
+.icon-border_vertical:before {
+  content: "\e920";
+}
+.icon-flip_camera_android:before {
+  content: "\e91e";
+}
+.icon-expand:before {
+  content: "\e91f";
+}
+.icon-insert_chart_outlined:before {
+  content: "\e91c";
+}
+.icon-graphic_eq:before {
+  content: "\e91d";
+}
+.icon-format_shapes:before {
+  content: "\e91a";
+}
+.icon-photo_size_select_small:before {
+  content: "\e917";
+}
+.icon-photo_size_select_large1:before {
+  content: "\e918";
+}
+.icon-select_all:before {
+  content: "\e919";
+}
+.icon-arrow_drop_down_circle:before {
+  content: "\e909";
+}
+.icon-arrow_drop_down:before {
+  content: "\e90f";
+}
+.icon-format_color_fill:before {
+  content: "\e906";
+}
+.icon-color_lens:before {
+  content: "\e907";
+}
+.icon-photo_size_select_large:before {
+  content: "\e900";
+}
+.icon-googleanalytics:before {
+  content: "\e91b";
+  color: #ffc107;
+}
+.icon-matrix:before {
+  content: "\e908";
+}
+.icon-exclamation:before {
+  content: "\e927";
+}
+.icon-sort-desc:before {
+  content: "\e911";
+}
+.icon-paint-brush:before {
+  content: "\e905";
+}
+.icon-help-with-circle:before {
+  content: "\e915";
+}
+.icon-help:before {
+  content: "\e916";
+}
+.icon-palette:before {
+  content: "\e903";
+}
+.icon-close-outline:before {
+  content: "\e924";
+}
+.icon-checkmark-outline:before {
+  content: "\e925";
+}
+.icon-question:before {
+  content: "\e914";
+}

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">    <link href="./css/index.css" rel="stylesheet">
+    <link href="./css/fonts.css" rel="stylesheet">
+    
+    <title>Burbuja</title>
+</head>
+
+<body onload="processor.doLoad()">
+    <header>
+        <div class="cabezaeraPrincipal">
+            <div class="mover_sa">
+                <h1>Procesamiento digital de imagenes</h1>
+                <h5>Cisneros  Oropeza Carlos Manuel</h5>
+                <h5>Ingeniería en computacion 902 - A</h5>
+                <h5>Universidad Tecnológica de la mixteca</h5>
+            </div>
+        </div>
+        <div class="menu_bar">
+			<a class="bt-menu"><span class="icon-menu"></span>Menu</a>
+		</div>
+
+		<nav id="menu-nav">
+			<ul>
+                <!-- Carga de imagenes -->
+                <li><a onclick="desplazar('nav_blocked0')"><span class="icon-arrow_drop_down"></span>Carga de imagenes
+                    <span id="carga_img" class="icon-question" onclick="ayuda1(1)"></span></a>
+                    <div id="nav_blocked0" class="nav_blocked">
+                        <div class="pas">
+                            <span class="icon-image"></span>Imagen 1
+                            <input type="file" id="imagen1" accept=".jpg,.jpeg,.png" multiple="">
+                        </div>
+                        <div class="pas">
+                            <span class="icon-image"></span>Imagen 2
+                            <input type="file" id="imagen2" accept=".jpg,.jpeg,.png" multiple="">
+                        </div>
+                    </div>
+                </li>
+
+                <!-- main menu of FISRT partial algotims -->
+                <li><a onclick="desplazar('nav_blocked')"><span class="icon-arrow_drop_down"></span>Primer parcial</a>
+                    <div id="nav_blocked" class="nav_blocked">
+                        <!-- Color algoritms -->
+                        <a onclick="desplazar('nav_blocked_1')">
+                            <span class="icon-arrow_drop_down"></span>
+                            <span class="icon-color_lens"></span>colores
+                            <span id="carga_img" class="icon-question" onclick="ayuda1(4)"></span>
+                        </a>
+                        <div id="nav_blocked_1" class="nav_blocked_inside">
+                            <a onclick="gris();"><span class="icon-stop2"></span>Escala de grises</a>
+                            <a onclick="rojo();" style="color: #F00;">Rojo</a>
+                            <a onclick="verde();" style="color: #0F0">Verde</a>
+                            <a onclick="azul();" style="color: #00F">Azul</a>
+                            <a onclick="negativo();"><span class="icon-exclamation"></span>Negativo</a>
+                            <a><span class="icon-color_lens"></span> Color 1 <input id="c1" name="color1" type="color" value="#ffffff"/>  Color 2 <input id="c2" name="color2" type="color" value="#000000"/></a>
+                            <a>
+                                <span class="icon-eyedropper"></span> gradiente (falta)
+                            </a>
+                            <a>
+                                <span class="icon-format_color_fill"></span>Colorear(falta)
+                            </a>
+                            
+                        </div>
+                        <!-- ----------------------------------- -->
+                        <!-- Algoritms about HISTOGRAMS! -->
+                        <a onclick="desplazar('nav_blocked_2')">
+                            <span class="icon-arrow_drop_down"></span>
+                            <span class="icon-stats-bars"></span>Histogramas
+                            <span id="carga_img" class="icon-question" onclick="ayuda1(3)"></span>
+                        </a>
+                        <div id="nav_blocked_2" class="nav_blocked_inside">
+                            <a onclick="histogramaG(3);"><span class="icon-googleanalytics"></span> Ver histograma en color</a>
+                            <a onclick="histogramaG(1);"><span class="icon-stats-dots"></span> Ver histograma en grises</a>
+                            <a> a: <input type="text" pattern="[0-9]" id="rage_a" size="1" value="0">
+                                b: <input type="text" pattern="[0-9]" id="rage_b" size="1" value="0"></a>
+                            <a onclick="regImg()">
+                                <span class="icon-linear_scale"></span>Colorear imagen en un rango a-b</a>
+                            <a>
+                                <span class="icon-brightness-contrast"></span>Ecualizar en color
+                            </a>
+                            <a>
+                                <span class="icon-brightness-contrast"></span>Ecualizar en grises
+                            </a>
+                        </div>
+                        <!-- ----------------------------------- -->
+                        <!-- Logical Operators -->
+                        <a onclick="desplazar('nav_blocked_3')">
+                            <span class="icon-arrow_drop_down"></span>
+                            <span class="icon-magic-wand"></span>Operadores Logicos
+                            <span id="carga_img" class="icon-question" onclick="ayuda1(2)"></span>
+                        </a>
+                        <div id="nav_blocked_3" class="nav_blocked_inside">
+                            <a onclick="opAndOr(1);">And</a>
+                            <a onclick="opAndOr(2);">Or</a>
+                        </div>
+                        <!-- ----------------------------------- -->
+                        <!-- Edges -->
+                        <a onclick="desplazar('nav_blocked_4')">
+                            <span class="icon-arrow_drop_down"></span>
+                            <span class="icon-format_shapes"></span> Bordes
+                            <span id="carga_img" class="icon-question" onclick="ayuda1(5)"></span>
+                        </a>
+                        <div id="nav_blocked_4" class="nav_blocked_inside">
+                            <!-- gray edges -->
+                            <a onclick="desplazar('nav_blocked_inside1')">
+                                <span class="icon-arrow_drop_down"></span>Color</a>
+                            <div id="nav_blocked_inside1" class="nav_blocked_inside2">
+                                <a onclick="bordesVG(3);"><span class="icon-border_vertical"></span>Verticales en colores</a>
+                                <a onclick="bordesHG(3);"><span class="icon-border_horizontal"></span>Horizontales en colores</a>
+                                <a onclick="bordesDG(3);"><span class="icon-stacked_line_chart"></span>Diagonales en colores</a>
+                                <a onclick="bordesTG(3);"><span class="icon-border_all"></span>Todos los Bordes en colores</a>
+                            </div>
+                            <!-- ----------------------------------- -->
+                            <!-- color edges -->
+                            <a onclick="desplazar('nav_blocked_inside2')"><span class="icon-arrow_drop_down"></span>Grises</a>
+                            <div id="nav_blocked_inside2" class="nav_blocked_inside2">
+                                <a onclick="bordesVG(1);"><span class="icon-border_vertical"></span>Verticales en grises</a>
+                                <a onclick="bordesHG(1);"><span class="icon-border_horizontal"></span>Horizontales en grises</a>
+                                <a onclick="bordesDG(1);"><span class="icon-stacked_line_chart"></span>Diagonales en grises</a>
+                                <a onclick="bordesTG(1);"><span class="icon-border_all"></span>Todos los Bordes en grises</a>
+                            </div>
+                            <!-- ----------------------------------- -->
+                        </div>
+                        <!-- ----------------------------------- -->
+                    </div>
+                </li>
+                <!-- -------------------------------------------------------------------------------- -->
+                <!-- main menu of SECOND partial algotims -->
+                <li><a onclick="desplazar('nav_blocked2')"><span class="icon-arrow_drop_down"></span>Segundo parcial</a>
+                    <div id="nav_blocked2" class="nav_blocked">
+                        
+                        <!-- Aritmetics operators -->
+                        <a onclick="desplazar('nav_blocked_5')">
+                            <span class="icon-arrow_drop_down"></span>
+                            <span class="icon-calculator"></span>Operadores algebraícos
+                            <span id="carga_img" class="icon-question" onclick="ayuda1(6)"></span>
+                        </a>
+                        <div id="nav_blocked_5" class="nav_blocked_inside">
+                            <a onclick="operadorsumaRes(1)"><span class="icon-add"></span>Suma</a>
+                            <a onclick="operadorsumaRes(2)"><span class="icon-minus"></span>Resta</a>
+                        </div>
+                        <!-- ----------------------------------- -->
+                        
+                        <!-- Combolusion -->
+                        <a onclick="desplazar('nav_blocked_6')">
+                            <span class="icon-arrow_drop_down"></span>
+                            <span class="icon-filter"></span>Filtros de combolusion
+                            <span id="carga_img" class="icon-question" onclick="ayuda1(7)"></span>
+                        </a>
+                        <div id="nav_blocked_6" class="nav_blocked_inside">
+                            <a id="open" >
+                                <span class="icon-notebook-list"></span>Ver todos los filtros pasa altas
+                            </a>
+                            <a id="open1" >
+                                <span class="icon-notebook-list"></span>Ver todos los filtros pasa bajas
+                            </a>
+                            <a id="open2" >
+                                <span class="icon-notebook-list"></span>Ver todos los filtros de bordes
+                            </a>
+                            <a id="open3" >
+                                <span class="icon-notebook-list"></span>Ver todos los filtros de bordes de Faler
+                            </a>
+                            <a id="open4" >
+                                <span class="icon-notebook-list"></span>Ver todos los filtros de bordes de Krish
+                            </a>
+                            <a id="open5" >
+                                <span class="icon-notebook-list"></span>Ver todos los filtros de bordes de Prewitt
+                            </a>
+                            <a id="open6" >
+                                <span class="icon-notebook-list"></span>Ver todos los filtros de bordes de Matrices Gaussianas
+                            </a>
+                            <form class="form-horizontal" id="mat1" name="matriz1">
+                                <center>Matriz de Convolución</center>
+                                <center>
+                                    <input id="rangoInput" value="3" type="range" min="3" step="2" max="25" list="tickmarks">
+                                    <p id="var_range">3 x 3</p>
+                                </center>
+                                <center id="borrar">
+                                    <input type="text" id="00" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="01" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="02" pattern="[0-9]" size="1" value="1">
+                                    <br>
+                                    <input type="text" id="10" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="11" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="12" pattern="[0-9]" size="1" value="1">
+                                    <br>
+                                    <input type="text" id="20" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="21" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="22" pattern="[0-9]" size="1" value="1">
+                                </center>
+                            </form>
+                            <center><button type="button" class="btn_primary" onclick="comb()">Aplicar</button></center>
+                            
+                        </div>
+                        <!-- ----------------------------------- -->
+
+                        <!-- Aritmetics operators -->
+                        <a onclick="desplazar('nav_blocked_7')">
+                            <span class="icon-arrow_drop_down"></span>
+                            <span class="icon-photo_size_select_large1"></span>Desplazar, rotar y escalar
+                            <span id="carga_img" class="icon-question" onclick="ayuda1(8)"></span>
+                        </a>
+                        <div id="nav_blocked_7" class="nav_blocked_inside">
+                            <center>
+                                <a><span class="icon-move-horizontal"></span><input id="desplx" value="15" type="text" pattern="[0-9]" size="1">
+                                    <span class="icon-move-vertical"></span><input id="desply" value="0" type="text" pattern="[0-9]" size="1"></a>
+                            </center>
+                            <a onclick="imgDespl()"><span class="icon-select_all"></span>Desplazar</a>
+                            <center>
+                                <a>Ángulo: <input id="rotation" value="90" type="text" pattern="[0-9]" size="1" min="0" max="360"></a>
+                            </center>
+                            <a onclick="rotation()"><span class="icon-flip_camera_android"></span>Rotar</a>
+                            <center>
+                                <a>Aumentar en <p id="aumentar">1</p><input id="rangAumentar" value="1" type="range" min="0" step="1" max="6">
+                                <br>
+                                Disminuir en <p id="disminuir">1</p><input id="rangDisminuir" value="1" type="range" min="0" step="1" max="6">
+                                </a>
+                            </center>
+                            <a onclick="escalar()"><span class="icon-enlarge"></span>Escalar (falta)</a>
+                        </div>
+                        <!-- ----------------------------------- -->
+
+                    </div>
+                </li>
+				<!-- -------------------------------------------------------------------------------- -->
+                <!-- main menu of TIRHT partial algotims -->
+                <li><a onclick="desplazar('nav_blocked8')"><span class="icon-arrow_drop_down"></span>Tercer parcial</a>
+                    <div id="nav_blocked8" class="nav_blocked">
+                        <a onclick="desplazar('nav_blocked9')"><span class="icon-arrow_drop_down"></span>Segmentacion</a>
+                        <div id="nav_blocked9" class="nav_blocked_inside">
+                            <!-- Into de segmentacion() param´s  1 means normal, 2 means Euclidiana-->
+                            <a>
+                                <p id="prrf_segmen_value">Tolerancia: 0</p>
+                                <input id="input_segmentation_range" value="0" type="range" min="0" step="1" max="255" list="tickmarks" size="2">
+                                <span class="icon-color_lens"></span> Color: <input id="c3" name="color1" type="color" value="#ffffff"/>
+                            </a>
+                            <a onclick="segmentacion(1)"><span class="icon-add"></span>Segmentacion Normal</a>
+                            <a onclick="segmentacion(2)"><span class="icon-add"></span>Segmentacion Euclidiana</a>
+                            <a onclick="segmentacion_real_time()"><span class="icon-add "></span>Segmentacion en tiempo real</a>
+                        </div>
+
+                        <a onclick="desplazar('nav_blocked10')"><span class="icon-arrow_drop_down"></span>Operadores Morfológicos</a>
+                        <div id="nav_blocked10" class="nav_blocked_inside">
+                            <!-- Into de morfologicos_operadores() param´s  
+                            1 means Dilación, 
+                            2 means Erosion
+                            3 means Perímetro
+                            4 means Relleno
+                            5 means Esqueletización-->
+                            <form class="form-horizontal" id="mat1_OpMorfo" name="matriz1_OpMorfo">
+                                <center>Matriz de Aplicación</center>
+                                <center>
+                                    <input id="rangoInput_OpMorfo" value="3" type="range" min="3" step="2" max="25" list="tickmarks">
+                                    <p id="var_range_OpMorfo">3 x 3</p>
+                                </center>
+                                <center id="borrar_OpMorfo">
+                                    <input type="text" id="_00" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="_01" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="_02" pattern="[0-9]" size="1" value="1">
+                                    <br>
+                                    <input type="text" id="_10" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="_11" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="_12" pattern="[0-9]" size="1" value="1">
+                                    <br>
+                                    <input type="text" id="_20" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="_21" pattern="[0-9]" size="1" value="1">
+                                    <input type="text" id="_22" pattern="[0-9]" size="1" value="1">
+                                </center>
+                            </form>
+                            <a onclick="operadores_morfologicos(1)"><span class="icon-add"></span>Dilatación</a>
+                            <a onclick="operadores_morfologicos(2)"><span class="icon-add"></span>Erosión</a>
+                            <a onclick="perimetro()"><span class="icon-add"></span>Perímetro</a>
+                            <a ><span class="icon-add"></span>Relleno</a>
+                            <div>
+                                <center>
+                                    <p>Numero de veces a aplicar la erosion: <input type="text" id="app_num_esque" size="1" value="1"></p>
+                                </center>
+                                <a onclick="esqueletizacion()"><span class="icon-add"></span>Esqueletización</a>
+                                
+                            </div>
+                            <a onclick="cierre()"><span class="icon-add"></span>Cierre</a>
+                            <a onclick="limpieza()"><span class="icon-add"></span>Limpieza</a>
+                        </div>
+
+                        <a  href="Examen3erParcial"><span class="icon-arrow_drop_down"></span>Proyectode tercer parcial</a>
+                    </div>
+                </li>
+			</ul>
+		</nav>
+    </header>
+
+    
+    <div class="container_canvas">
+        <div class="box_canvas">
+            <div id="main">
+                <canvas id="imagen1_space"></canvas>
+            </div>
+            <div class="canavasText">
+                <h5>Imagen 1</h5>
+            </div>
+        </div>
+        
+        <div class="box_canvas2">
+            <div id="main1">
+                <canvas id="imagen2_space"></canvas>
+            </div>
+            <div class="canavasText">
+                <h5>Imagen 2</h5>
+            </div>
+        </div>
+    </div>
+    <div>
+        <center><h1>Resultados</h1></center>
+    </div>
+    <div class="container_canvas">
+        <div class="box_canvas">
+            <div id="main2">
+                <canvas id="imagen1_result"></canvas>
+            </div>
+        </div>
+        
+        <div class="box_canvas2">
+            <div id="main3">
+                <canvas id="imagen2_result"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div style="display:none" >
+        <video src="" id="video" controls="true" crossorigin="anonymous" autoplay="false"></video>
+    </div>    
+    
+    <div id="modal_container" class="modal-container">
+        <div class="modal">
+            <h1>FILTROS DE COMBOLUSIÓN</h1>
+            <br>
+            <h3>Filtros pasa bajas ó filtro de baja frecuencia</h3>
+            <div class="dialog_rec">
+                <p style="padding: 10px;">Los denominados filtros de bajas frecuencias o paso bajo son aquellos, que en el dominio de las frecuencias, dejan pasar solamente las frecuencias bajas (los elementos más comunes y
+                    que ocupan mayor superficie en la imagen) y eliminan las altas frecuencias (los elementos
+                    esporádicos y elementos poco frecuentes).
+                </p>
+                <div class="para_acomodar">
+                    <!-- ---------------------- -->                  
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>0</td>
+                              <td>1</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>0</td>
+                              <td>1</td>
+                              <td>0</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(1)" class="btn_primary" >Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>1</td>
+                              <td>1</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>1</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>1</td>
+                              <td>1</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(2)" class="btn_primary">Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>1</td>
+                              <td>1</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>1</td>
+                              <td>1</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(3)" class="btn_primary">Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                            <td>1</td>
+                            <td>2</td>
+                            <td>1</td>
+                            </tr>
+                            <tr>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>2</td>
+                            </tr>
+                            <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>1</td>
+                            </tr>
+                        </table>
+                        <button  class="btn_primary">Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                            <td>1</td>
+                            <td>4</td>
+                            <td>1</td>
+                            </tr>
+                            <tr>
+                            <td>4</td>
+                            <td>12</td>
+                            <td>4</td>
+                            </tr>
+                            <tr>
+                            <td>1</td>
+                            <td>4</td>
+                            <td>1</td>
+                            </tr>
+                        </table>
+                        <button class="btn_primary">Aplicar</button>
+                    </div>
+                     <!-- ---------------------- --> 
+                </div>
+            </div>
+            <button class="btn_primary" id="close">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal_container1" class="modal-container">
+        <div class="modal">
+            <h1>FILTROS DE COMBOLUSIÓN</h1>
+            <br>
+            <h3>Filtros pasa bajas ó filtro de baja frecuencia</h3>
+            <div class="dialog_rec">
+                <p style="padding: 10px;">Mejora la parte de los bordes. Si hay ruido, se resalta</p>
+                <div class="para_acomodar">
+                    <!-- ---------------------- -->                  
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>0</td>
+                              <td>-1</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>-1</td>
+                              <td>5</td>
+                              <td>-1</td>
+                            </tr>
+                            <tr>
+                              <td>0</td>
+                              <td>-1</td>
+                              <td>0</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(4)" class="btn_primary" >Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>-1</td>
+                              <td>-1</td>
+                              <td>-1</td>
+                            </tr>
+                            <tr>
+                              <td>-1</td>
+                              <td>9</td>
+                              <td>-1</td>
+                            </tr>
+                            <tr>
+                              <td>-1</td>
+                              <td>-1</td>
+                              <td>-1</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(5)" class="btn_primary">Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                                <td>1</td>
+                                <td>-2</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>-2</td>
+                                <td>5</td>
+                                <td>-2</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>-2</td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(6)" class="btn_primary">Aplicar</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn_primary" id="close1">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal_container2" class="modal-container">
+        <div class="modal">
+            <h1>FILTROS DE COMBOLUSIÓN</h1>
+            <br>
+            <h3>Filtros para bordes</h3>
+            <div class="dialog_rec">
+                <p style="padding: 10px;">Resaltalta los bordes de la imagen</p>
+                <div class="para_acomodar">
+                    <!-- ---------------------- -->                  
+                    <div class="para_acomodar_dos">
+                        <p>Bordes Horizontales</p>
+                        <table >
+                            <tr>  
+                              <td>0</td>
+                              <td>-1</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>0</td>
+                              <td>1</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(7)" class="btn_primary" >Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <p>Bordes Verticales</p>
+                        <table >
+                            <tr>  
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>-1</td>
+                              <td>1</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(8)" class="btn_primary">Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <p>Bordes Verticales y Horizontales</p>
+                        <table >
+                            <tr>  
+                                <td>0</td>
+                                <td>-1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>-1</td>
+                                <td>2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(9)" class="btn_primary">Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <p>Bordes Verticales y Horizontales intensificados</p>
+                        <table >
+                            <tr>  
+                                <td>0</td>
+                                <td>-2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>-2</td>
+                                <td>4</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </table>
+                        <button  class="btn_primary">Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <p>Bordes mejorados</p>
+                        <table >
+                            <tr>  
+                                <td>-1</td>
+                                <td>0</td>
+                                <td>-1</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>4</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>-1</td>
+                                <td>0</td>
+                                <td>-1</td>
+                            </tr>
+                        </table>
+                        <button  class="btn_primary">Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                </div>
+            </div>
+            <button class="btn_primary" id="close2">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal_container3" class="modal-container">
+        <div class="modal">
+            <h1>FILTROS DE COMBOLUSIÓN</h1>
+            <br>
+            <h3>Filtros de bordes de Faler</h3>
+            <div class="dialog_rec">
+                <p style="padding: 10px;">Mejora los bordes</p>
+                <div class="para_acomodar">
+                    <!-- ---------------------- -->                  
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>-1</td>
+                              <td>0</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>-1</td>
+                              <td>0</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>-1</td>
+                              <td>0</td>
+                              <td>1</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(10)" class="btn_primary" >Aplicar</button>
+                    </div>
+                    <!-- ---------------------- --> 
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>1</td>
+                              <td>0</td>
+                              <td>-1</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>0</td>
+                              <td>-1</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>0</td>
+                              <td>-1</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(11)" class="btn_primary">Aplicar</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn_primary" id="close3">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal_container4" class="modal-container">
+        <div class="modal">
+            <h1>FILTROS DE COMBOLUSIÓN</h1>
+            <br>
+            <h3>Filtros de bordes de Krish</h3>
+            <div class="dialog_rec">
+                <p style="padding: 10px;">Mejora los bordes</p>
+                <div class="para_acomodar">
+                    <!-- ---------------------- -->                  
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>5</td>
+                              <td>5</td>
+                              <td>5</td>
+                            </tr>
+                            <tr>
+                              <td>-3</td>
+                              <td>0</td>
+                              <td>-3</td>
+                            </tr>
+                            <tr>
+                              <td>-3</td>
+                              <td>-3</td>
+                              <td>-3</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(12)" class="btn_primary" >Aplicar</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn_primary" id="close4">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal_container5" class="modal-container">
+        <div class="modal">
+            <h1>FILTROS DE COMBOLUSIÓN</h1>
+            <br>
+            <h3>Filtros de bordes de Prewitt</h3>
+            <div class="dialog_rec">
+                <p style="padding: 10px;">Mejora los bordes</p>
+                <div class="para_acomodar">
+                    <!-- ---------------------- -->                  
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>1</td>
+                              <td>1</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>-2</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>-1</td>
+                              <td>-1</td>
+                              <td>-1</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(13)" class="btn_primary" >Aplicar</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn_primary" id="close5">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal_container6" class="modal-container">
+        <div class="modal">
+            <h1>FILTROS DE COMBOLUSIÓN</h1>
+            <br>
+            <h3>Filtros de bordes de matrices Gausianas</h3>
+            <div class="dialog_rec">
+                <p style="padding: 10px;">Mejora los bordes</p>
+                <div class="para_acomodar">
+                    <!-- ---------------------- -->                  
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>0</td>
+                              <td>0</td>
+                              <td>-1</td>
+                              <td>-1</td>
+                              <td>-1</td>
+                              <td>0</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>-2</td>
+                                <td>-3</td>
+                                <td>-3</td>
+                                <td>-3</td>
+                                <td>-2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>-1</td>
+                                <td>-3</td>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>-3</td>
+                                <td>-1</td>
+                            </tr>
+                            <tr>
+                                <td>-1</td>
+                                <td>-3</td>
+                                <td>5</td>
+                                <td>16</td>
+                                <td>5</td>
+                                <td>-3</td>
+                                <td>-1</td>
+                            </tr>
+                            <tr>
+                                <td>-1</td>
+                                <td>-3</td>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>-3</td>
+                                <td>-1</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>-2</td>
+                                <td>-3</td>
+                                <td>-3</td>
+                                <td>-3</td>
+                                <td>-2</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>-1</td>
+                                <td>-1</td>
+                                <td>-1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(14)" class="btn_primary" >Aplicar</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn_primary" id="close6">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal_container5" class="modal-container">
+        <div class="modal">
+            <h1>FILTROS DE COMBOLUSIÓN</h1>
+            <br>
+            <h3>Filtros de bordes de Prewitt</h3>
+            <div class="dialog_rec">
+                <p style="padding: 10px;">Mejora los bordes</p>
+                <div class="para_acomodar">
+                    <!-- ---------------------- -->                  
+                    <div class="para_acomodar_dos">
+                        <table >
+                            <tr>  
+                              <td>1</td>
+                              <td>1</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>-2</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>-1</td>
+                              <td>-1</td>
+                              <td>-1</td>
+                            </tr>
+                        </table>
+                        <button onclick="rellenar(1)" class="btn_primary" >Aplicar</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn_primary" id="close5">Cerrar</button>
+        </div>
+    </div>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/camera.js"></script>
+    <script type="text/javascript" src="js/main.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.min.js"></script>
+</body>

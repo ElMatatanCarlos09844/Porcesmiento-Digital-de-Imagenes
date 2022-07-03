@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">    
+    <link href="./css/index.css" rel="stylesheet">
+    <link href="./css/fonts.css" rel="stylesheet">
+    <link href="./css/Exam3erParcialStyles.css" rel="stylesheet">
+    
+    <title>Burbuja</title>
+</head>
+
+<body>
+    <hearder>
+        <div class="cabezaeraPrincipal">
+            <div class="mover_sa">
+                <h1>Procesamiento digital de imagenes</h1>
+                <h2>EXAMERN DE TERCER PARCIAL</h2>
+                <h5>Cisneros  Oropeza Carlos Manuel</h5>
+                <h5>Ingeniería en computacion 902 - A</h5>
+                <h5>Universidad Tecnológica de la mixteca</h5>
+            </div>
+        </div>
+
+        <div class="menu_bar">
+			<a onclick="desplazar('panel_left')" class="bt-menu"><span class="icon-menu"></span>Menu</a>
+		</div>
+        
+    </hearder>
+    
+
+
+    <div class ="body_panel" id="body_panel">
+
+        <div class="panel_left" id="panel_left" style="display:none">
+			<ul>
+                <!-- Carga de imagenes -->
+                <li>
+                    <a onclick="desplazar('exam_nav_blocked0')"><span class="icon-arrow_drop_down"></span>Carga de imagenes</a>
+                    <div id="exam_nav_blocked0" class="nav_blocked">
+                        <div class="pas">
+                            <span class="icon-image"></span>Imagen: 
+                            <input type="file" id="imagen1" accept=".jpg,.jpeg,.png" multiple="">
+                        </div>
+                    </div>
+                    
+                    <a onclick="desplazar('exam_nav_blocked1')"><span class="icon-arrow_drop_down"></span>¿Que se hace?</a>
+                    <div id="exam_nav_blocked1" class="nav_blocked">
+                        <a id="open"><span class="icon-question"></span><p>&nbsp;&nbsp;Instrucciones</p></a>
+                        <a>
+                            <p id="prrf_segmen_value">Tolerancia: 0 &nbsp;</p>
+                            <input id="input_segmentation_range" value="100" type="range" min="0" step="1" max="255" list="tickmarks" size="2">
+                        </a>
+                        <a>Tipo de matriz &nbsp;<center>
+                            <select class="form-select" aria-label="Default select example" id="MatrizType" name="MatrizType">
+                                <option>Matriz completa</option>
+                                <option>Matriz en cruz</option>
+                            </select>
+                        </center></a>
+                        <a >Tipo de algoritmo &nbsp;<center>
+                            <select class="form-select" aria-label="Default select example" id="AlgoritmoType" name="AlgoritmoType">
+                                <option>Dilatacion</option>
+                                <option>Erosion</option>
+                                <option>Perímetro</option>
+                                <option>Relleno</option>
+                                <option>Cierre</option>
+                                <option>Limpieza</option>
+                                <option>Esqueletización</option>
+                            </select>
+                        </center></a>
+                        <a id="num_esque" style="display: none">
+                            Numero de veces a aplicar la erosion en el algoritmos de esqueletización:
+                            <input type="text" id="app_num_esque" size="1" value="3">
+                        </a>
+                        <a><center>
+                            <p>Tamaño de la matriz: </p>
+                            <input id="rangoInput_OpMorfo" value="3" type="range" min="3" step="2" max="25" list="tickmarks">
+                            <p id="var_range_OpMorfo">3 x 3</p>
+                        </center></a>
+                    </div>
+                    
+                </li>
+            </ul>
+        </div>
+
+        <div class = "panel_right" id = "panel_right">
+            <div class="container_canvas">
+                <div class="box_canvas">
+                    <center><h4>Imagen Original</h4></center>
+                    <div id="main">
+                        <canvas id="imagen1_space"></canvas>
+                    </div>
+                    <div class="canavasInputText">
+                        <center><h4>Detalles</h4></center>
+
+                    </div>
+                </div>
+                
+                <div class="box_canvas2">
+                    <center><h4>Imagen segmentada</h4></center>
+
+                    <div id="main1">
+                        <canvas id="imagen2_space"></canvas>
+                    </div>
+
+                    <div class="canavasInputText">
+                        <center><h4>Detalles</h4></center>
+                    </div>
+                </div>
+            </div>
+        
+            <div>
+                <center><h1>Resultados</h1></center>
+            </div>
+        
+            <div class="container_canvas">
+                <div class="box_canvas">
+                    <div id="main2">
+                        <canvas id="imagen1_result"></canvas>
+                        <div class="canavasInputText">
+                            <center><h4>Detalles</h4></center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal_container" class="modal-container">
+        <div class="modal">
+            <h1>Pasos a seguir</h1>
+            <br>
+            <div class="dialog_rec">
+                <ul style="padding: 10px;">
+                    <li>Primero debes de cargar una imagen.</li>
+                    <br>
+                    <li>Debes de seleccionar la tolerancia que se aplicara para segmentar.</li>
+                    <br>
+                    <li>También seleeciona que tipo de patrón quieres ocupar para aplicar a la dilatacion o erosion.</li>
+                    <br>
+                    <li>Cuando algunos de los parametros ya sea Tolerancia, Tipo de matriz, tipo de algoritmo o el tamaño de la matriz es cambiado o modificado; se aplicaraá el algoritmo con las características seleccionadas.</li>
+                </ul>
+            </div>
+            <br>
+            <br>
+            <button class="btn_primary" id="close">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/Exam3erParcial.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.min.js"></script>
+</body>
